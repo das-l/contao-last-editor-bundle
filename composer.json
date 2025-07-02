@@ -1,0 +1,68 @@
+{
+    "name": "das-l/contao-last-editor-bundle",
+    "description": "Stores and shows which backend user last edited an item. The tables for which this is recorded can be configured.",
+    "type": "contao-bundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Alex Wuttke",
+            "homepage": "https://das-l.de",
+            "email": "alex@das-l.de"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/das-l/contao-last-editor-bundle/issues",
+        "source": "https://github.com/das-l/contao-last-editor-bundle"
+    },
+    "require": {
+        "php": "^8.2",
+        "contao/core-bundle": "^5.3",
+        "doctrine/dbal": "^3.9",
+        "symfony/config": "^6.4",
+        "symfony/dependency-injection": "^6.4",
+        "symfony/http-kernel": "^6.4",
+        "symfony/security-core": "^6.4",
+        "symfony/translation-contracts": "^3.5"
+    },
+    "autoload":{
+        "psr-4": {
+            "DasL\\ContaoLastEditorBundle\\": "src/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@rector-dry",
+            "@ecs-check"
+        ],
+        "apply": [
+            "@rector-process",
+            "@ecs-fix"
+        ],
+        "rector-process": "vendor/bin/rector process --ansi",
+        "rector-dry": "vendor/bin/rector process --dry-run --ansi",
+        "ecs-check": "vendor/bin/ecs check --ansi",
+        "ecs-fix": "vendor/bin/ecs check --fix --ansi"
+    },
+    "extra":{
+        "contao-manager-plugin": "DasL\\ContaoLastEditorBundle\\ContaoManager\\Plugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "php-http/discovery": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "contao/manager-plugin": true,
+            "contao-community-alliance/composer-plugin": true
+        }
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "@stable",
+        "contao/easy-coding-standard": "@stable",
+        "rector/rector": "@stable",
+        "phpstan/phpstan": "@stable",
+        "contao/rector": "dev-main"
+    }
+}

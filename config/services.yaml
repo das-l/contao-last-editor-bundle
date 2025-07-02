@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    DasL\ContaoLastEditorBundle\:
+        resource: ../src
+        exclude: ../src/{ContaoManager,DependencyInjection}
+
+    DasL\ContaoLastEditorBundle\EventListener\DataContainer\AddLastEditorFieldsListener:
+        arguments:
+            - '%contao_last_editor.tables%'
+
+    DasL\ContaoLastEditorBundle\EventListener\DataContainer\StoreUserOnSubmitListener:
+        arguments:
+            $tables: '%contao_last_editor.tables%'
+        public: true
+
+    DasL\ContaoLastEditorBundle\Migration\CopyUserFromLatestVersionMigration:
+        arguments:
+            $tables: '%contao_last_editor.tables%'
