@@ -6,7 +6,7 @@ Stores and shows which backend user last edited an item. The tables for which th
 
 How can this be useful when versioning already exists? By default, versions are purged after 90 days. If you need to know which user last edited something more than 90 days ago, you can't get that information. Technically, to avoid this, you can set the `versionPeriod` config to something huge, or remove the purge task by replacing the `PurgeExpiredDataCron` and removing the purge config in `TL_PURGE`. However, if you have a quite frequently edited site, you end up with a very large amount of data over time, which to avoid the purge exists in the first place.
 
-If all you need to know is which user last edited something, rather than the entire edit history, this extension is for you.
+**If all you need to know is which user last edited something, rather than the entire edit history, this extension is for you. It does not replace Contao's versioning in any way, it just adds the last editor as a permanent piece of information.**
 
 ## Setup and Usage
 
